@@ -9,7 +9,7 @@ import useAuth from '../../../hooks/useAuth';
 
 const SignIn = () => {
     const [loginData, setLoginData] = useState({});
-    const { user, login, isLoading, authError } = useAuth();
+    const { user, loginUser, isLoading, authError, signInWithGoogle } = useAuth();
 
     const history = useHistory();
     const location = useLocation();
@@ -26,7 +26,7 @@ const SignIn = () => {
     const handleSignInSubmit = e => {
         e.preventDefault();
         const { email, password } = loginData;
-        login(email, password, location, history);
+        loginUser(email, password, location, history);
     }
 
     return (
@@ -44,6 +44,8 @@ const SignIn = () => {
                             to="/signUp">
                             <Button variant="text">New User? Please SignUp</Button>
                         </NavLink>
+                        <p>------------ or -------------</p>
+                        <Button onClick={() => signInWithGoogle(location, history)} sx={{ width: '75%', m: 1, backgroundImage: 'linear-gradient(to left,rgb(102, 207, 128),rgb(122, 189, 180))', color: 'white', }}>Google Sign In</Button>
                     </form>}
                     {isLoading && <CircularProgress />}
                     {user?.email && <Alert severity="success">User login successfully</Alert>}

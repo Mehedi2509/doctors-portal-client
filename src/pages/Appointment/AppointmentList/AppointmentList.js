@@ -3,7 +3,7 @@ import React from 'react';
 import Paper from '@mui/material/Paper';
 import BookingModal from '../BookingModal/BookingModal';
 
-const AppointmentList = ({ appointment, date }) => {
+const AppointmentList = ({ appointment, date, setBookingSuccess }) => {
     const { name, time, space } = appointment;
 
     // open modal
@@ -28,10 +28,12 @@ const AppointmentList = ({ appointment, date }) => {
                 </Paper>
             </Grid>
             <BookingModal
+                key={appointment.name}
                 handleCloseModal={handleCloseModal}
                 openModal={openModal}
                 appointment={appointment}
                 date={date}
+                setBookingSuccess={setBookingSuccess}
             ></BookingModal>
         </>
     );

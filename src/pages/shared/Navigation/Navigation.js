@@ -31,7 +31,15 @@ const Navigation = () => {
                         <Link style={link} to="/home">Doctors Portal</Link>
                     </Typography>
                     <Link style={link} to="/appointment">APPOINTMENT</Link>
-                    {user?.email ? <Button sx={{ color: 'white', marginTop: '6px', marginLeft: '20px', }} onClick={logout}>Sign Out</Button> : <Button><Link style={{ color: 'white', textDecoration: 'none', marginLeft: '20px', marginTop: '5px' }} to="/signIn">Sign In</Link></Button>}
+                    {
+                        user?.email ?
+                            <Box>
+                                <Button><Link style={{ color: 'white', textDecoration: 'none', marginLeft: '20px', marginTop: '5px' }} to="/dashboard">Dashboard</Link></Button>
+                                <Button sx={{ color: 'white', marginTop: '5px', marginLeft: '20px', }} onClick={logout}>Sign Out</Button>
+                            </Box>
+                            :
+                            <Button><Link style={{ color: 'white', textDecoration: 'none', marginLeft: '20px', marginTop: '5px' }} to="/signIn">Sign In</Link></Button>
+                    }
                 </Toolbar>
             </AppBar>
         </Box >
