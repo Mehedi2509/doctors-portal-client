@@ -44,7 +44,7 @@ const BookingModal = ({ openModal, handleCloseModal, appointment, date, setBooki
             date: date.toLocaleDateString(),
         };
 
-        fetch('http://localhost:4000/appointment', {
+        fetch('https://blooming-anchorage-32050.herokuapp.com/appointment', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

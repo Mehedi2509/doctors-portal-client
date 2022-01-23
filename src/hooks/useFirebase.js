@@ -66,7 +66,7 @@ const useFirebase = () => {
                 history.replace(destination);
             })
             .catch((error) => {
-                const errorMessage = error.message;
+
             })
             .finally(() => setIsLoading(false));
     }
@@ -86,11 +86,11 @@ const useFirebase = () => {
             setIsLoading(false);
         });
         return () => unsubscribe();
-    }, []);
+    }, [auth]);
 
     useEffect(() => {
 
-        fetch(`http://localhost:4000/users/${user?.email}`)
+        fetch(`https://blooming-anchorage-32050.herokuapp.com/${user?.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
 
@@ -108,7 +108,7 @@ const useFirebase = () => {
     const saveUserData = (email, displayName, method) => {
         const user = { email, displayName };
 
-        fetch('http://localhost:4000/users', {
+        fetch('https://blooming-anchorage-32050.herokuapp.com/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'
